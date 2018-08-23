@@ -1,0 +1,111 @@
+\newif\if@indep
+\@indepfalse
+\newif\if@section
+\@sectionfalse
+
+\DeclareOption{indep}{\@indeptrue}
+\DeclareOption{section}{\@sectiontrue}
+\ProcessOptions\relax
+
+\usepackage{amsthm}
+\usepackage{parskip}
+% makes parskip and definitions play well together
+\begingroup
+\makeatletter
+   \@for\theoremstyle:=definition,remark,plain\do{%
+     \expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{%
+        \addtolength\thm@preskip\parskip
+     }%
+   }
+\endgroup
+
+\if@section
+	\newtheorem{theorem}{Theorem}[section]
+\else
+	\newtheorem{theorem}{Theorem}
+\fi
+\if@indep
+	\if@section
+		\newtheorem{axiom}{Axiom}[section]
+		\newtheorem{claim}{Claim}[section]
+		\newtheorem{conclusion}{Conclusion}[section]
+		\newtheorem{conjecture}{Conjecture}[section]
+		\newtheorem{condition}{Condition}[section]
+		\newtheorem{corollary}{Corollary}[section]
+		\newtheorem{criterion}{Criterion}[section]
+		\newtheorem{lemma}{Lemma}[section]
+		\newtheorem{notation}{Notation}[section]
+		\newtheorem{proposition}{Proposition}[section]
+	\else
+		\newtheorem{axiom}{Axiom}
+		\newtheorem{claim}{Claim}
+		\newtheorem{conclusion}{Conclusion}
+		\newtheorem{conjecture}{Conjecture}
+		\newtheorem{condition}{Condition}
+		\newtheorem{corollary}{Corollary}
+		\newtheorem{criterion}{Criterion}
+		\newtheorem{lemma}{Lemma}
+		\newtheorem{notation}{Notation}
+		\newtheorem{proposition}{Proposition}
+	\fi
+\else
+	\newtheorem{axiom}[theorem]{Axiom}
+	\newtheorem{claim}[theorem]{Claim}
+	\newtheorem{conclusion}[theorem]{Conclusion}
+	\newtheorem{conjecture}[theorem]{Conjecture}
+	\newtheorem{condition}[theorem]{Condition}
+	\newtheorem{corollary}[theorem]{Corollary}
+	\newtheorem{criterion}[theorem]{Criterion}
+	\newtheorem{lemma}[theorem]{Lemma}
+	\newtheorem{notation}[theorem]{Notation}
+	\newtheorem{proposition}[theorem]{Proposition}
+\fi
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{axiom*}{Axiom}
+\newtheorem*{claim*}{Claim}
+\newtheorem*{conclusion*}{Conclusion}
+\newtheorem*{condition*}{Condition}
+\newtheorem*{conjecture*}{Conjecture}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{criterion*}{Criterion}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{notation*}{Notation}
+\newtheorem*{proposition*}{Proposition}
+
+\theoremstyle{definition}
+
+\if@section
+	\newtheorem{acknowledgement}{Acknowledgement}[section]
+	\newtheorem{algorithm}{Algorithm}[section]
+	\newtheorem{case}{Case}[section]
+	\newtheorem{definition}{Definition}[section]
+	\newtheorem{example}{Example}[section]
+	\newtheorem{exercise}{Exercise}[section]
+	\newtheorem{problem}{Problem}[section]
+	\newtheorem{remark}{Remark}[section]
+	\newtheorem{solution}{Solution}[section]
+	\newtheorem{summary}{Summary}[section]
+\else
+	\newtheorem{acknowledgement}{Acknowledgement}
+	\newtheorem{algorithm}[theorem]{Algorithm}
+	\newtheorem{case}{Case}
+	\newtheorem{definition}{Definition}
+	\newtheorem{example}{Example}
+	\newtheorem{exercise}{Exercise}
+	\newtheorem{problem}[exercise]{Problem}
+	\newtheorem{remark}{Remark}
+	\newtheorem{solution}{Solution}
+	\newtheorem{summary}{Summary}
+\fi
+
+\newtheorem*{acknowledgement*}{Acknowledgement}
+\newtheorem*{algorithm*}{Algorithm}
+\newtheorem*{case*}{Case}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{example*}{Example}
+\newtheorem*{exercise*}{Exercise}
+\newtheorem*{problem*}{Problem}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{solution*}{Solution}
+\newtheorem*{summary*}{Summary}

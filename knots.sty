@@ -1,0 +1,11 @@
+\usetikzlibrary{knots}
+
+\newlength{\diagramwidth}
+\newlength{\diagramrise}
+\newlength{\skeinwidth}
+\newlength{\skeinrise}
+\newcommand{\diagram}[2][\diagramrise]{\raisebox{#1}{\includegraphics[width=\diagramwidth]{#2}}}
+\newcommand{\Kauffman}[2][\diagramrise]{\bracket{\diagram[#1]{#2}}}
+\newcommand{\skein}[2][\skeinrise]{\raisebox{#1}{\includegraphics[width=\skeinwidth]{#2}}}
+\newcommand{\wri}{wr}
+\newcommand{\lk}{\ell k}
