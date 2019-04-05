@@ -84,8 +84,8 @@
 \newcommand{\irm}{\mathrm{i}}
 
 % Derivatives and parenthesized fractions%
-\newcommand{\dd}[2][]{\mathop{d^{#1}\!\mkern2.5mu#2}}
-\newcommand{\drm}[2][]{\mathop{\mathrm{d}^{#1}\!\mkern2.5mu#2}}
+\newcommand{\dd}[2][]{\mathop{}\mkern-4mud^{#1}\mkern-0.5mu#2}
+\newcommand{\drm}[2][]{\mathop{}\mkern-4mu\mathrm{d}^{#1}\mkern-0.5mu#2}
 \newcommand{\der}[3][]{\frac{\dd[#1]{#2}}{\dd{#3}^{#1}}}
 \newcommand{\pder}[3][]{\if\instring{,}{#3}\frac{\pd^{#1}#2}{\@for\el:=#3\do{\pd\el\,}\!}\else\frac{\pd^{#1}#2}{\pd#3^{#1}}\fi}
 \newcommand{\vder}[3][]{\frac{\delta^{#1}#2}{\delta{#3}^{#1}}}
