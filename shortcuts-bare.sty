@@ -268,6 +268,9 @@
 	\let\uvec\@uvecbf
 \fi
 
+% Tensor product %
+\newcommand{\tensor}{\otimes}
+
 % Astronomical symbols %
 \if@standalone
 	\newcommand{\earth}{\oplus}
@@ -278,6 +281,26 @@
 	\renewcommand{\earth}{\oplus}
 	\renewcommand{\sun}{\odot}
 \fi
+
+% Better dot accents (most significant changes for dddot and ddddot) %
+\DeclareFontFamily{U}{mathb}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathb}{m}{n}{
+      <5> <6> <7> <8> <9> <10> gen * mathb
+      <10.95> mathb10 <12> <14.4> <17.28> <20.74> <24.88> mathb12
+      }{}
+\DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
+\DeclareFontSubstitution{U}{mathb}{m}{n}
+\let\dot\relax
+\let\ddot\relax
+\let\dddot\relax
+\let\ddddot\relax
+\DeclareMathAccent{\dot}{0}{mathb}{"39}
+\DeclareMathAccent{\ddot}{0}{mathb}{"3A}
+\DeclareMathAccent{\dddot}{0}{mathb}{"3B}
+\DeclareMathAccent{\ddddot}{0}{mathb}{"3C}
+
+% Bar through letter (for barred I, doesn't work with wider letters atm) %
+\newcommand{\midbar}[1]{\mathord{\ooalign{$#1$\cr\hidewidth\raise-.5ex\hbox{$\bar{ }\mkern4.3mu$}\cr}}\mkern-1.5mu}
 
 \let\save@mathaccent\mathaccent
 \newcommand*\if@single[3]{%
