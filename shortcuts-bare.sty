@@ -175,6 +175,11 @@
 \newcommand{\@sbrack}[2][]{\if\relax\detokenize{#1}\relax\left\lbrack #2 \right\rbrack\else\csname#1l\endcsname\lbrack #2 \csname#1r\endcsname\rbrack\fi}
 \newcommand{\@@sbrack}[2][1]{\lbrack #2 \rbrack}
 
+\newcommand{\@sofkern}{\mkern2mu}
+\newcommand{\sof}{\@ifstar\@@sof\@sof}
+\newcommand{\@sof}[2][]{\if\relax\detokenize{#1}\relax\left\lbrack\@sofkern #2 \@sofkern\right\rbrack\else\csname#1l\endcsname\lbrack\@sofkern #2 \@sofkern\csname#1r\endcsname\rbrack\fi}
+\newcommand{\@@sof}[2][1]{\lbrack\@sofkern #2 \@sofkern\rbrack}
+
 \newcommand{\eval}{\@ifstar\@@eval\@eval}
 \newcommand{\@eval}[2][]{\if\relax\detokenize{#1}\relax\left. #2 \right\rvert\else\csname#1l\endcsname. #2 \csname#1r\endcsname\rvert\fi}
 \newcommand{\@@eval}[2][]{ #2 \rvert}
@@ -186,8 +191,8 @@
 \newcommand{\@@given}[1][]{ \vert }
 
 \newcommand{\DKL}{\@ifstar\@@DKL\@DKL}
-\newcommand{\@DKL}[3][]{\,\mathrm{D}_{\mathrm{KL}}\if\relax\detokenize{#1}\relax\left[\,#2\,\middle\Vert\,#3\,\right]\else\csname#1l\endcsname[\,#2\,\middle\Vert\,#3\,\csname#1r\endcsname]\fi}
-\newcommand{\@@DKL}[3][]{\,\mathrm{D}_{\mathrm{KL}}[\,#2\,|\,#3\,]}
+\newcommand{\@DKL}[3][]{\mathop{D_{\mathrm{KL}}}\sof{#2\@sofkern\middle\Vert\@sofkern#3}}
+\newcommand{\@@DKL}[3][]{\mathop{D_{\mathrm{KL}}}\sof*{#2\@sofkern\Vert\@sofkern#3}}
 
 \newcommand{\stirling}[2]{\left\lbrack\genfrac{}{}{0pt}{}{#1}{#2}\right\rbrack}
 \newcommand{\Stirling}[2]{\left\lbrace\genfrac{}{}{0pt}{}{#1}{#2}\right\rbrace}
