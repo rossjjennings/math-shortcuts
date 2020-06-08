@@ -287,22 +287,16 @@
 	\renewcommand{\sun}{\odot}
 \fi
 
-% Better dot accents (most significant changes for dddot and ddddot) %
-\DeclareFontFamily{U}{mathb}{\hyphenchar\font45}
-\DeclareFontShape{U}{mathb}{m}{n}{
-      <5> <6> <7> <8> <9> <10> gen * mathb
-      <10.95> mathb10 <12> <14.4> <17.28> <20.74> <24.88> mathb12
-      }{}
-\DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
-\DeclareFontSubstitution{U}{mathb}{m}{n}
-\let\dot\relax
-\let\ddot\relax
-\let\dddot\relax
-\let\ddddot\relax
-\DeclareMathAccent{\dot}{0}{mathb}{"39}
-\DeclareMathAccent{\ddot}{0}{mathb}{"3A}
-\DeclareMathAccent{\dddot}{0}{mathb}{"3B}
-\DeclareMathAccent{\ddddot}{0}{mathb}{"3C}
+% Better triple and quadruple dot accents %
+% based on TeX.SE answer by Gonzalo Medina %
+% https://tex.stackexchange.com/questions/131587/mathtools-dddot-cause-the-term-to-rise %
+\newcommand\scaleddot{\scalebox{.89}{.}}
+\renewcommand{\dddot}[1]{%
+  {\mathop{\kern\z@#1}\limits^{\makebox[0pt][c]{\vbox to-2.2\ex@{\kern-\tw@\ex@
+   \hbox{\normalfont\scaleddot\kern-0.5pt\scaleddot\kern-0.5pt\scaleddot}\vss}}}}}
+\renewcommand{\ddddot}[1]{%
+  {\mathop{\kern\z@#1}\limits^{\makebox[0pt][c]{\vbox to-2.2\ex@{\kern-\tw@\ex@
+  \hbox{\normalfont\scaleddot\kern-0.5pt\scaleddot\kern-0.5pt\scaleddot\kern-0.5pt\scaleddot}\vss}}}}}
 
 % Bar through letter (for barred I, doesn't work with wider letters atm) %
 \newcommand{\midbar}[1]{\mathord{\ooalign{$#1$\cr\hidewidth\raise-.5ex\hbox{$\bar{ }\mkern4.3mu$}\cr}}\mkern-1.5mu}
