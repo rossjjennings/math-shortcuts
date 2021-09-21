@@ -15,6 +15,8 @@
 \@revtexfalse
 \newif\if@bfvec
 \@bfvecfalse
+\newif\if@savetablenum
+\@savetablenumfalse
 
 %Options
 \DeclareOption{upright}{\AtEndOfPackage{\let\dd\drm \let\ii\irm \let\ee\erm}}
@@ -27,6 +29,7 @@
 \DeclareOption{thin-unit-space}{\@thickspacefalse}
 \DeclareOption{revtex}{\@revtextrue}
 \DeclareOption{bfvec}{\@bfvectrue}
+\DeclareOption{deluxetable}{\@savetablenumtrue}
 \ProcessOptions\relax
 
 % Treat input encoding as unicode %
@@ -46,7 +49,14 @@
 \if@thickspace
 	\PassOptionsToPackage{number-unit-product=\;}{siunitx}
 \fi
+\if@savetablenum
+	\RequirePackage{savesym}
+	\savesymbol{tablenum}
+\fi
 \RequirePackage{siunitx} % Provides \si for units, \SI for numbers with units.
+\if@savetablenum
+	\restoresymbol{SIX}{tablenum}
+\fi
 \RequirePackage{braket} % Provides \Bra, \Ket, \Braket, \Set
 \if@chem
 	\RequirePackage{mhchem}
